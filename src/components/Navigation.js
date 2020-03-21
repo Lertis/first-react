@@ -6,7 +6,7 @@ const Navigation = () => {
     return (
         <div className="nav-btns">
             <Button variant="contained" color="primary" component={Link} to="/">Home</Button>
-            <Button variant="contained" color="primary" component={Link} to="/about">About</Button>
+            <Button variant="contained" color="primary" component={Link} to="/redux">Redux</Button>
             <Button variant="contained" color="primary" component={Link} to="/contact">Contact</Button>
         </div>
     );
