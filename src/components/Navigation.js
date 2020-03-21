@@ -1,12 +1,13 @@
 import React from "react";
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 
 const Navigation = () => {
     return (
         <div>
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/about">About</NavLink>
-            <NavLink to="/contact">Contact</NavLink>
+            <Button variant="contained" color="primary" component={Link} to="/">Home</Button>
+            <Button variant="contained" color="primary" component={Link} to="/about">About</Button>
+            <Button variant="contained" color="primary" component={Link} to="/contact">Contact</Button>
         </div>
     );
 };
