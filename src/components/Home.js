@@ -42,11 +42,15 @@ export default function Home() {
 
 	return (
 		<>
-			<TodoList todos={todos} toggleTodo={toggleTodo} />
-			<TextField id="standard-basic" label="Standard" value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
-			<Button variant="contained" color="primary" onClick={handleAddTodo}>Add Todo</Button>
-			<Button variant="contained" color="primary" onClick={handleClearTodo}>Clear Todo</Button>
-			<div>{todos.filter(todo => !todo.complete).length} left to do</div>
+			<div>
+				<div className="flex-row">
+				<TextField className="fr-m" id="standard-basic" label="Add something to do..." value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
+					<Button className="fr-m" variant="contained" color="primary" onClick={handleAddTodo}>Add Todo</Button>
+					<Button className="fr-m" variant="contained" color="primary" onClick={handleClearTodo}>Clear Todo</Button>
+				</div>
+				<TodoList todos={todos} toggleTodo={toggleTodo} />
+				<div>{todos.filter(todo => !todo.complete).length} left to do</div>
+			</div>
 		</>
 	);
 };

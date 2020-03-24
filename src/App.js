@@ -9,21 +9,23 @@ import Navigation from "./components/Navigation";
 
 
 class App extends Component {
-  render() {
-    return (
-      <BrowserRouter>
-        <div>
-          <Navigation />
-          <Switch>
-            <Route path="/" component={Home} exact />
-            <Route path="/redux" component={Redux} />
-            <Route path="/contact" component={Contact} />
-            <Route component={Error} />
-          </Switch>
-        </div>
-      </BrowserRouter>
-    );
-  }
+	render() {
+		return (
+			<BrowserRouter>
+				<div>
+					<Navigation />
+					<div className="flex-column">
+						<Switch>
+							<Route path="/" component={Home} exact />
+							<Route path="/redux" component={Redux} />
+							<Route path="/contact" component={Contact} />
+							<Route component={Error} />
+						</Switch>
+					</div>
+				</div>
+			</BrowserRouter>
+		);
+	}
 };
 
 export default App; 
