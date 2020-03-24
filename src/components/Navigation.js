@@ -7,7 +7,7 @@ const Navigation = () => {
 		<div className="nav-btns">
 			<Button variant="contained" color="primary" component={Link} to="/">Todo</Button>
 			<Button variant="contained" color="primary" component={Link} to="/counter">Counter</Button>
-			<Button variant="contained" color="primary" component={Link} to="/comments">Comments</Button>
+			<Button variant="contained" color="primary" component={Link} to="/comments">Comments (Axios)</Button>
 		</div>
 	);
 };
