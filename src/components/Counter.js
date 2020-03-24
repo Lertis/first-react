@@ -3,7 +3,7 @@ import Button from "@material-ui/core/Button";
 import { useSelector, useDispatch } from 'react-redux';
 import { increment, decrement, reset } from './../state/actions/actions';
 
-const Redux = () => {
+const Counter = () => {
 	const counter = useSelector(state => state.counter);
 	const dispatch = useDispatch();
 
@@ -22,4 +22,4 @@ const Redux = () => {
 	);
 };
 
-export default Redux;
+export default Counter;
