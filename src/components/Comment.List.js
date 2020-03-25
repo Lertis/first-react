@@ -8,7 +8,7 @@ export default class CommentList extends React.Component {
 	state = {
 		comments: [],
 		loading: true,
-		error: null
+		error: false
 	};
 
 	componentDidMount() {
@@ -32,6 +32,9 @@ export default class CommentList extends React.Component {
 						<div>
 							{
 								this.state.error ?
+									<div>
+										<h2 className="warning-text text-center">Please check your internet connection!</h2>
+									</div> :
 									<ul>
 										{this.state.comments.map((comment) => {
 											return (
@@ -41,10 +44,7 @@ export default class CommentList extends React.Component {
 												</div>
 											);
 										})}
-									</ul> :
-									<div>
-										<h2 className="warning-text text-center">Please check your internet connection!</h2>
-									</div>
+									</ul>
 							}
 						</div>
 				}
