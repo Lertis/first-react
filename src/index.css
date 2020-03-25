@@ -50,6 +50,10 @@ code {
 	text-align: center;
 }
 
+.warning-text {
+	color: rgb(179, 87, 59)
+}
+
 .nav-btns {
 	display: flex;
 	justify-content: space-between;

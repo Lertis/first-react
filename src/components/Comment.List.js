@@ -7,7 +7,8 @@ export default class CommentList extends React.Component {
 	API_URL = "https://jsonplaceholder.typicode.com/comments";
 	state = {
 		comments: [],
-		loading: true
+		loading: true,
+		error: null
 	};
 
 	componentDidMount() {
@@ -15,26 +16,37 @@ export default class CommentList extends React.Component {
 			.then((comments) => {
 				setTimeout(() => this.setState({ comments: comments.data, loading: false }), 1200); // Just that spinner works
 			})
+			.catch((error) => {
+				this.setState({ comments: [], loading: false, errors: true });
+			});
 	}
 
 	render() {
 		return (
 			<div>
-				{this.state.loading ?
-					<div className="flex-center">
-						<CircularProgress />
-					</div>
-					:
-					<ul>
-						{this.state.comments.map((comment) => {
-							return (
-								<div className="flex-row" key={comment.id}>
-									<Icon fontSize="small">email</Icon> {comment.email}
-									<Icon fontSize="small">comment</Icon> {comment.name}
-								</div>
-							);
-						})}
-					</ul>
+				{
+					this.state.loading ?
+						<div className="flex-center">
+							<CircularProgress />
+						</div> :
+						<div>
+							{
+								this.state.error ?
+									<ul>
+										{this.state.comments.map((comment) => {
+											return (
+												<div className="flex-row" key={comment.id}>
+													<Icon fontSize="small">email</Icon> {comment.email}
+													<Icon fontSize="small">comment</Icon> {comment.name}
+												</div>
+											);
+										})}
+									</ul> :
+									<div>
+										<h2 className="warning-text text-center">Please check your internet connection!</h2>
+									</div>
+							}
+						</div>
 				}
 			</div>
 		);
