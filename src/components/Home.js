@@ -29,6 +29,13 @@ export default function Home() {
 		setTodos(newTodos);
 	}
 
+	function removeTodo(id) {
+		const newTodos = [...todos];
+		const todoToDelete = newTodos.find(todo => todo.id === id);
+		newTodos.splice(newTodos.indexOf(todoToDelete), 1);
+		setTodos(newTodos);
+	}
+
 	function handleAddTodo() {
 		setTodos(prevTodos => {
 			return [...prevTodos, { id: uuidv4(), name: inputValue, complete: false }]
@@ -44,11 +51,11 @@ export default function Home() {
 		<>
 			<div>
 				<div className="flex-row">
-				<TextField className="fr-m" id="standard-basic" label="Add something to do..." value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
+					<TextField className="fr-m" id="standard-basic" label="Add something to do..." value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
 					<Button className="fr-m" variant="contained" color="primary" onClick={handleAddTodo}>Add Todo</Button>
 					<Button className="fr-m" variant="contained" color="primary" onClick={handleClearTodo}>Clear Todo</Button>
 				</div>
-				<TodoList todos={todos} toggleTodo={toggleTodo} />
+				<TodoList todos={todos} toggleTodo={toggleTodo} removeTodo={removeTodo} />
 				<div>{todos.filter(todo => !todo.complete).length} left to do</div>
 			</div>
 		</>
