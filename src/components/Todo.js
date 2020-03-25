@@ -19,5 +19,6 @@ export default function Todo({ todo, toggleTodo, index }) {
 
 Todo.propTypes = {
 	todo: PropTypes.object.isRequired,
-	index: PropTypes.number
+	index: PropTypes.number,
+	toggleTodo: PropTypes.func.isRequired
 };
