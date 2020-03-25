@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import Icon from '@material-ui/core/Icon';
+
+const ListLazyLoad = React.lazy(() => import('./List'));
 
 export default class CommentList extends React.Component {
 	API_URL = "https://jsonplaceholder.typicode.com/comments";
@@ -16,7 +17,7 @@ export default class CommentList extends React.Component {
 			.then((comments) => {
 				setTimeout(() => this.setState({ comments: comments.data, loading: false }), 1200); // Just that spinner works
 			})
-			.catch((error) => {
+			.catch(() => {
 				this.setState({ comments: [], loading: false, errors: true });
 			});
 	}
@@ -35,16 +36,11 @@ export default class CommentList extends React.Component {
 									<div>
 										<h2 className="warning-text text-center">Please check your internet connection!</h2>
 									</div> :
-									<ul>
-										{this.state.comments.map((comment) => {
-											return (
-												<div className="flex-row" key={comment.id}>
-													<Icon fontSize="small">email</Icon> {comment.email}
-													<Icon fontSize="small">comment</Icon> {comment.name}
-												</div>
-											);
-										})}
-									</ul>
+									<div>
+										<React.Suspense fallback={<p>Loading...</p>}>
+											<ListLazyLoad comments={this.state.comments}></ListLazyLoad>
+										</React.Suspense>
+									</div>
 							}
 						</div>
 				}
